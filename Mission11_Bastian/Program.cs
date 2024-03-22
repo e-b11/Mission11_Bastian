@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using Mission11_Bastian.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<BookstoreContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:BookConnection"]);
+});
+
+builder.Services.AddScoped<IBookRepository, EFBookRepository>();
 
 var app = builder.Build();
 

@@ -6,7 +6,11 @@ namespace Mission11_Bastian.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController() { }
+        private IBookRepository _repo;
+        public HomeController(IBookRepository temp) 
+        {
+            _repo = temp;
+        }
 
         public IActionResult Index()
         {
