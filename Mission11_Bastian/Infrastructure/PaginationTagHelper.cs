@@ -18,6 +18,8 @@ namespace Mission11_Bastian.Infrastructure
             urlHelperFactory = temp;
         }
 
+        //Set up different fields for tag helpers
+
         [ViewContext]
         [HtmlAttributeNotBound]
         public ViewContext? ViewContext { get; set; }
@@ -44,7 +46,7 @@ namespace Mission11_Bastian.Infrastructure
                     if (PageClassesEnabled)
                     {
                         tag.AddCssClass(PageClass);
-                        tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                        tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal); //Set styles for page links
                     }
                     
                     tag.InnerHtml.Append(i.ToString());
@@ -52,6 +54,7 @@ namespace Mission11_Bastian.Infrastructure
                     result.InnerHtml.AppendHtml(tag);
                 }
 
+                //Output a div of a links for each page
                 output.Content.AppendHtml(result.InnerHtml);
             }
         }
