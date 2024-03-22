@@ -30,8 +30,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//Add a cleaner route depending on what page of the index you're on
+app.MapControllerRoute("pagination", "Books/{pageNum}", new {Controller = "Home", action = "Index"});
+
+app.MapDefaultControllerRoute();
 
 app.Run();
